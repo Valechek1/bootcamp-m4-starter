@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { additionApi } from "../../api.js";
 import "./Favorites.css";
 
 class Favorites extends Component {
@@ -14,7 +13,6 @@ class Favorites extends Component {
   };
 
   render() {
-    console.log(this.state.title);
     const { favorites } = this.props;
     return (
       <div className="favorites">
@@ -29,7 +27,13 @@ class Favorites extends Component {
             return (
               <li key={item.imdbID} className="favorites__list-item">
                 {item.Title} ({item.Year})
-                <button onClick={() => this.props.remove(idx)}>X</button>
+                <button
+                  className="favorites__save"
+                  type="submit"
+                  onClick={() => this.props.remove(idx)}
+                >
+                  X
+                </button>
               </li>
             );
           })}
@@ -37,7 +41,7 @@ class Favorites extends Component {
         <button
           onClick={this.preservationFilms}
           type="button"
-          className="favorites__save"
+          className="search-box__form-submit"
           disabled={!this.state.title}
         >
           Сохранить список
