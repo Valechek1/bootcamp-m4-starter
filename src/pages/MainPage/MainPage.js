@@ -6,6 +6,7 @@ import Movies from "../../components/Movies/Movies";
 import Favorites from "../../components/Favorites/Favorites";
 import { searchMoviesTitle } from "../../api.js";
 import { searchMoviesFilmId } from "../../api.js";
+import { additionApi } from "../../api.js";
 
 class MainPage extends Component {
   state = {
@@ -42,6 +43,10 @@ class MainPage extends Component {
         movies: data,
       });
     });
+  };
+
+  preservationFilms = () => {
+    additionApi(this.state.title, )
   };
 
   render() {

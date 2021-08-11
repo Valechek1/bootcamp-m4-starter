@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { additionApi } from "../../api.js";
 import "./Favorites.css";
-
 
 class Favorites extends Component {
   state = {
@@ -11,10 +11,6 @@ class Favorites extends Component {
     this.setState({
       title: event.target.value,
     });
-  };
-
-  preservationFilms = () => {
-
   };
 
   render() {
