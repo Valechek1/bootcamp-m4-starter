@@ -1,6 +1,6 @@
-# Module 4 project – Movie organizer.
+# Development of the "Organizer" project
 
-Starter for Module 4 project in Algoritmika Coding Bootcamp
+The application allows you to create lists of movies🖥 and share them with your friends🥳.
 
 ### Run:
 
