@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "./Favorites.css";
+import { createList } from "../../api";
 
 class Favorites extends Component {
   state = {
     title: "",
+    id: "",
+    linkActive: false,
   };
 
   onTitleChange = (event) => {
@@ -12,7 +15,18 @@ class Favorites extends Component {
     });
   };
 
+  preservationFilms = () => {
+    createList(this.state.title, this.props.favorites).then((data) => {
+      console.log(data);
+      this.setState({
+        id: data.id,
+        linkActive: true,
+      });
+    });
+  };
+
   render() {
+    console.log(this.state);
     const { favorites } = this.props;
     return (
       <div className="favorites">
@@ -41,11 +55,21 @@ class Favorites extends Component {
         <button
           onClick={this.preservationFilms}
           type="button"
-          className="search-box__form-submit"
+          className={`favorites__save ${
+            this.state.linkActive ? "link__none" : null
+          }`}
           disabled={!this.state.title}
         >
           Сохранить список
         </button>
+        <a
+          href="/list/{this.state.id}"
+          className={`link__none ${
+            this.state.linkActive ? "link__block" : null
+          }`}
+        >
+          Перейти к списку
+        </a>
       </div>
     );
   }

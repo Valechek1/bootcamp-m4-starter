@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./ListPage.css";
+import { gettingListMovies } from "../../api.js";
 
 class ListPage extends Component {
   state = {
@@ -9,6 +10,9 @@ class ListPage extends Component {
   componentDidMount() {
     const id = this.props.match.params;
     console.log(id);
+    gettingListMovies(id).then((data) => {
+      console.log(data);
+    });
     // TODO: запрос к сервер на получение списка
     // TODO: запросы к серверу по всем imdbID
   }

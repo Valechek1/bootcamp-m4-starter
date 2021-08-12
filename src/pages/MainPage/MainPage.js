@@ -4,9 +4,7 @@ import Header from "../../components/Header/Header";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Movies from "../../components/Movies/Movies";
 import Favorites from "../../components/Favorites/Favorites";
-import { searchMoviesTitle } from "../api";
-// import { searchMoviesFilmId } from "../api.js";
-// import { additionApi } from "../api";
+import { searchMoviesTitle } from "../../api";
 
 class MainPage extends Component {
   state = {
@@ -20,8 +18,16 @@ class MainPage extends Component {
   };
 
   addFilmList = (movie) => {
+    const isMovieInsideFavorites = this.state.favorites.find((m) => {
+      return m.imdbID === movie.imdbID;
+    });
+
+    if (isMovieInsideFavorites) {
+      return;
+    }
+
     const newFavorites = [...this.state.favorites, movie];
-    console.log(newFavorites);
+
     this.setState({
       favorites: newFavorites,
     });
@@ -39,8 +45,10 @@ class MainPage extends Component {
   searchFilm = () => {
     searchMoviesTitle(this.state.nameFilm).then((data) => {
       if (!data) {
-        alert("Введите ✍️ корректное название фильма🥳!!!");
         this.setState({ nameFilm: "" });
+        setTimeout(() => {
+          alert("Введите ✍️ корректное название фильма🥳!!!");
+        }, 1);
       } else {
         this.setState({
           movies: data,
@@ -49,10 +57,6 @@ class MainPage extends Component {
       }
     });
   };
-
-  // preservationFilms = () => {
-  //   additionApi(this.state.title);
-  // };
 
   render() {
     return (

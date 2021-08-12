@@ -32,10 +32,10 @@ export async function createList(title, movies) {
   return data;
 }
 
-// export async function getData() {
-//   const response = await fetch(
-//     "http://www.omdbapi.com/?i=tt3896198&apikey=3d932b68"
-//   );
-//   const data = await response.json();
-//   return data;
-// }
+export async function gettingListMovies(id) {
+  const response = await fetch(
+    `https://acb-api.algoritmika.org/api/movies/list/${id}`
+  );
+  const data = await response.json();
+  return data;
+}
