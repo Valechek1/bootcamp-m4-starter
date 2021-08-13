@@ -7,7 +7,6 @@ class Favorites extends Component {
   state = {
     title: "",
     id: "",
-    linkActive: false,
   };
 
   onTitleChange = (event) => {
@@ -20,7 +19,6 @@ class Favorites extends Component {
     createList(this.state.title, this.props.favorites).then((data) => {
       this.setState({
         id: data.id,
-        linkActive: true,
       });
     });
   };
@@ -52,9 +50,7 @@ class Favorites extends Component {
           })}
         </ul>
         {this.state.id ? (
-          <Link to={`/list/${this.state.id}`} href={`/list/${this.state.id}`}>
-            Перейти к списку
-          </Link>
+          <Link to={`/list/${this.state.id}`}>Перейти к списку</Link>
         ) : (
           <button
             onClick={this.preservationFilms}
