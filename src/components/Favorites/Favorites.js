@@ -14,7 +14,6 @@ class Favorites extends Component {
       title: event.target.value,
     });
   };
-
   preservationFilms = () => {
     createList(this.state.title, this.props.favorites).then((data) => {
       this.setState({
