@@ -37,5 +37,14 @@ export async function gettingListMovies(id) {
     `https://acb-api.algoritmika.org/api/movies/list/${id}`
   );
   const data = await response.json();
-  return data;
+  const moviesPromises = data.movies.map((movieId) => {
+    return searchMoviesFilmId(movieId);
+  });
+  const movies = await Promise.all(moviesPromises);
+  return {
+    id: data.id,
+    title: data.title,
+    movies: movies,
+    poster: data.Poster,
+  };
 }

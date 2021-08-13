@@ -4,41 +4,40 @@ import { gettingListMovies } from "../../api.js";
 
 class ListPage extends Component {
   state = {
-    movies: [{ title: "The Godfather", year: 1972, imdbID: "", id: "" }],
+    title: "",
+    movies: [],
   };
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
-    gettingListMovies(id).then((data) => {
-      this.setState({
-        imdbID: data.movies,
-        id: data.id,
-      });
-      console.log(data);
-      console.log(this.state);
+    gettingListMovies(id).then((list) => {
+      this.setState(list);
     });
-
-    // TODO: запрос к сервер на получение списка
-    // TODO: запросы к серверу по всем imdbID
   }
 
   render() {
     return (
       <div className="list-page">
-        <h1 className="list-page__title">Мой список</h1>
+        <h1 className="list-page__title">{this.state.title}</h1>
         <ul>
           {this.state.movies.map((item) => {
             return (
-              <li key={item.imdbID}>
-                <a
-                  href="https://www.imdb.com/title/tt0068646/"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {item.title} ({item.year})
-                </a>
-              </li>
+              <article className="movie-item" key={item.imdbID}>
+                <li className="link-film">
+                  <img
+                    className="movie-item__poster"
+                    src={item.Poster}
+                    alt={this.state.title}
+                  />
+                  <a
+                    href={`https://www.imdb.com/title/${item.imdbID}/`}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {item.Title} ({item.Year})
+                  </a>
+                </li>
+              </article>
             );
           })}
         </ul>

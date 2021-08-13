@@ -18,7 +18,6 @@ class Favorites extends Component {
 
   preservationFilms = () => {
     createList(this.state.title, this.props.favorites).then((data) => {
-      console.log(data);
       this.setState({
         id: data.id,
         linkActive: true,
@@ -27,7 +26,6 @@ class Favorites extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { favorites } = this.props;
     return (
       <div className="favorites">
