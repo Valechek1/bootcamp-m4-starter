@@ -4,15 +4,21 @@ import { gettingListMovies } from "../../api.js";
 
 class ListPage extends Component {
   state = {
-    movies: [{ title: "The Godfather", year: 1972, imdbID: "tt0068646" }],
+    movies: [{ title: "The Godfather", year: 1972, imdbID: "", id: "" }],
   };
 
   componentDidMount() {
-    const id = this.props.match.params;
+    const id = this.props.match.params.id;
     console.log(id);
     gettingListMovies(id).then((data) => {
+      this.setState({
+        imdbID: data.movies,
+        id: data.id,
+      });
       console.log(data);
+      console.log(this.state);
     });
+
     // TODO: запрос к сервер на получение списка
     // TODO: запросы к серверу по всем imdbID
   }

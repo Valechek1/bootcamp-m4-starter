@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Favorites.css";
 import { createList } from "../../api";
+import { Link } from "react-router-dom";
 
 class Favorites extends Component {
   state = {
@@ -52,24 +53,20 @@ class Favorites extends Component {
             );
           })}
         </ul>
-        <button
-          onClick={this.preservationFilms}
-          type="button"
-          className={`favorites__save ${
-            this.state.linkActive ? "link__none" : null
-          }`}
-          disabled={!this.state.title}
-        >
-          Сохранить список
-        </button>
-        <a
-          href="/list/{this.state.id}"
-          className={`link__none ${
-            this.state.linkActive ? "link__block" : null
-          }`}
-        >
-          Перейти к списку
-        </a>
+        {this.state.id ? (
+          <Link to={`/list/${this.state.id}`} href={`/list/${this.state.id}`}>
+            Перейти к списку
+          </Link>
+        ) : (
+          <button
+            onClick={this.preservationFilms}
+            type="button"
+            className={`favorites__save`}
+            disabled={!this.state.title}
+          >
+            Сохранить список
+          </button>
+        )}
       </div>
     );
   }

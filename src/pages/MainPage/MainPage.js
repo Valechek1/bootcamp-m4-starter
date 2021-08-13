@@ -21,16 +21,20 @@ class MainPage extends Component {
     const isMovieInsideFavorites = this.state.favorites.find((m) => {
       return m.imdbID === movie.imdbID;
     });
+    console.log(isMovieInsideFavorites);
 
     if (isMovieInsideFavorites) {
       return;
     }
-
+    console.log(this.state.favorites);
+    console.log(this.state.movies);
     const newFavorites = [...this.state.favorites, movie];
+    console.log(newFavorites);
 
     this.setState({
       favorites: newFavorites,
     });
+    console.log(this.state.favorites);
   };
 
   removingFavorite = (index) => {
