@@ -54,7 +54,7 @@ class Favorites extends Component {
           <button
             onClick={this.preservationFilms}
             type="button"
-            className={`favorites__save`}
+            className="search-box__form-submit"
             disabled={!this.state.title}
           >
             Сохранить список
