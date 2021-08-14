@@ -2,7 +2,7 @@
 
 The application allows you to create lists of movies 🖥 and share them with your friends 🥳.
 
-### Run:
+## Example:
 
 - Clone the project to your computer
 
