@@ -16,6 +16,8 @@ class ListPage extends Component {
   }
 
   render() {
+    const replacementPoster =
+      "https://stuki-druki.com/biofoto1/Jackie-Chan.jpg";
     return (
       <div className="list-page">
         <h1 className="list-page__title">{this.state.title}</h1>
@@ -26,7 +28,9 @@ class ListPage extends Component {
                 <li className="link-film">
                   <img
                     className="movie-item__poster"
-                    src={item.Poster}
+                    src={
+                      item.Poster !== "N/A" ? item.Poster : replacementPoster
+                    }
                     alt={this.state.title}
                   />
                   <a

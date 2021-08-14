@@ -32,6 +32,7 @@ class Favorites extends Component {
           placeholder="Введите название списка"
           className="favorites__name"
           onChange={this.onTitleChange}
+          disabled={this.state.id}
         />
         <ul className="favorites__list">
           {favorites.map((item, idx) => {
