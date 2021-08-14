@@ -16,7 +16,7 @@ git clone https://github.com/Valechek1/bootcamp-m4-starter.git
 npm install
 ```
 
-- Run the project
+## Run the project
 
 ```sh
 npm start
