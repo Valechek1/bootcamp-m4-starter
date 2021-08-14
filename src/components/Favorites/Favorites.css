@@ -48,12 +48,3 @@
   align-items: center;
   margin-bottom: 4px;
 }
-
-.link__none {
-  display: none;
-}
-
-.link__block {
-  display: block;
-  color: blue;
-}

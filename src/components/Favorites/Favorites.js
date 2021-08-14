@@ -14,6 +14,7 @@ class Favorites extends Component {
       title: event.target.value,
     });
   };
+
   preservationFilms = () => {
     createList(this.state.title, this.props.favorites).then((data) => {
       this.setState({
@@ -49,7 +50,9 @@ class Favorites extends Component {
           })}
         </ul>
         {this.state.id ? (
-          <Link to={`/list/${this.state.id}`}>Перейти к списку</Link>
+          <Link className="transition_link" to={`/list/${this.state.id}`}>
+            {this.state.title}
+          </Link>
         ) : (
           <button
             onClick={this.preservationFilms}
