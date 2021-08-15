@@ -25,6 +25,7 @@ class Favorites extends Component {
 
   render() {
     const { favorites } = this.props;
+    console.log(favorites);
     return (
       <div className="favorites">
         <input
@@ -32,7 +33,7 @@ class Favorites extends Component {
           placeholder="Введите название списка"
           className="favorites__name"
           onChange={this.onTitleChange}
-          disabled={this.state.id}
+          disabled={this.state.id || favorites.length === 0}
         />
         <ul className="favorites__list">
           {favorites.map((item, idx) => {
