@@ -1,4 +1,4 @@
-# Development of the "Organizer" project
+# Refinement of the "Organizer" project.
 
 > The application allows you to create lists of movies 🖥 and share them with your friends 🥳.
 
